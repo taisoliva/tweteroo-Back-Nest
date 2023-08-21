@@ -39,4 +39,41 @@ export class AppService {
     return this.tweets.push(tweet)
     
   }
+
+  AllTweets(){
+    const tweets = this.tweets.map(item => ({
+      username: item.getUser().getUsername(),
+      avatar: item.getUser().getAvatar(),
+      tweet: item.getTweet()
+    }))
+
+    return tweets
+  }
+
+  getTweets(page:string){
+
+    if(page !== undefined && isNaN(parseInt(page)) || parseInt(page)<1){
+      throw new Error('Bad Request')
+    }
+
+    const tweets = this.AllTweets()
+
+    if(page === undefined){
+      return tweets.slice(-15)
+    }
+
+    const limit = 15
+    const start = (parseInt(page) - 1) * limit
+    const end = (parseInt(page)) * limit
+
+    return tweets.slice(start,end)
+  }
+
+  getTweetsByUser(username: string){
+    const tweets = this.AllTweets()
+
+    const tweetsUser = tweets.filter(item => item.username === username)
+
+    return tweetsUser
+  }
 }

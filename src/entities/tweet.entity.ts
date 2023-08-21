@@ -9,4 +9,12 @@ export class Tweet {
         this.user = user
         this.tweet = tweet
     }
+
+    getUser(){
+        return this.user
+    }
+
+    getTweet(){
+        return this.tweet
+    }
 }
