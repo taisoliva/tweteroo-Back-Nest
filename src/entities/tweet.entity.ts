@@ -6,7 +6,7 @@ export class Tweet {
     private tweet: string
 
     constructor(user:User, tweet: string){
-        user = this.user
-        tweet = this.tweet
+        this.user = user
+        this.tweet = tweet
     }
 }

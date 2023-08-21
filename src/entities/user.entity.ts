@@ -4,7 +4,10 @@ export class User {
     private avatar: string
 
     constructor(username: string, avatar:string){
-        username = this.username
-        avatar = this.avatar
+       this.username = username
+       this.avatar = avatar
+    }
+    getUsername():string{
+        return this.username
     }
 }

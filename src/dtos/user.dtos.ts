@@ -1,5 +1,4 @@
-import { IsString, IsUrl } from "class-validator";
-import { User } from "src/entities/user.entity";
+import { IsNotEmpty, IsString, IsUrl } from "class-validator";
 
 export class UserDTO {
 
@@ -7,5 +6,8 @@ export class UserDTO {
     username: string
 
     @IsUrl()
+    @IsNotEmpty({
+        message:"All fields are required!"
+    })
     avatar:string
 }
